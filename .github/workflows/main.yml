@@ -18,15 +18,13 @@ jobs:
   ament_lint:
     name: ament_lint
     runs-on: ubuntu-20.04
-    strategy:
-      matrix:
-          linter: [lint_cmake, copyright]
     steps:
       - uses: actions/checkout@v2
-      - uses: ros-tooling/setup-ros@0.1.2
-      - uses: ros-tooling/action-ros-lint@master
+      - uses: ros-tooling/setup-ros@v0.1
         with:
-          distribution: melodic
-          linter: ${{ matrix.linter }}
-          package-name:
-            removert
+          required-ros-distributions: melodic
+      - uses: ros-tooling/action-ros-ci@v0.1
+        with:
+          package-name: removert
+          target-ros1-distro: melodic
+          vcs-repo-file-url: ""
