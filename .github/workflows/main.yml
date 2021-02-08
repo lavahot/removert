@@ -15,7 +15,7 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
+  ament_lint:
     name: ament_lint
     runs-on: ubuntu-20.04
     strategy:
@@ -23,7 +23,7 @@ jobs:
           linter: [xmllint, lint_cmake, copyright]
     steps:
       - uses: actions/checkout@v2
-      - uses: ros-tooling/setup-ros@0.1.1
+      - uses: ros-tooling/setup-ros@0.1.2
       - uses: ros-tooling/action-ros-lint@master
         with:
           distribution: melodic
